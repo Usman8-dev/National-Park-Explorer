@@ -1,16 +1,16 @@
-# React + Vite
+# 🗺️ National Park Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**National Park Explorer** is a responsive web application built with **React JS** that acts as a digital guidebook for U.S. National Parks. Powered by the official National Park Service (NPS) API, the platform provides users with essential, up-to-date logistics—such as operating hours, physical addresses, and direct contact info—to plan their visits.
 
-Currently, two official plugins are available:
+## 🚀 Features
+* **Dynamic Park Search:** Filter through all national parks instantly using a reactive search bar.
+* **Operational Hours:** View live weekly schedules, seasonal changes, and holiday exceptions.
+* **Location Mapping:** Access precise physical addresses, visitor center locations, and coordinate data.
+* **Direct Contacts:** Quickly find official phone numbers and inquiry emails mapped to each park.
+* **Component-Based UI:** Built with reusable, modular React components for optimal performance and clean design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+* **Frontend:** React JS (Functional Components & Hooks)
+* **Data Fetching:** Fetch API / Axios
+* **Styling:** CSS Modules / Tailwind CSS (Optional: change this to what you use)
+* **API Resource:** Official National Park Service (NPS) Data API
