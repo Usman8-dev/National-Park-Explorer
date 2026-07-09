@@ -22,7 +22,7 @@ function Home() {
       );
       const data = await res.json();
       setAllParks(data.data || []);
-      console.log(allParks);
+      console.log(setAllParks);
       setParks(data.data || []); // show all initially, or filter below
     } catch (error) {
       console.error("Fetch Error:", error);
