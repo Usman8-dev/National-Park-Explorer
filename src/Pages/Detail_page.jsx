@@ -16,7 +16,7 @@ function Detail_page() {
           `https://developer.nps.gov/api/v1/parks?id=${id}`,
           {
             headers: { "X-Api-Key": API_KEY },
-          }
+          },
         );
         const data = await res.json();
         setPark(data.data?.[0] || null);
@@ -89,19 +89,68 @@ function Detail_page() {
                   Entrance Fee
                 </h2>
                 <p className="text-gray-700">
-                  ${park.entranceFees[0].cost} — {park.entranceFees[0].description}
+                  ${park.entranceFees[0].cost} —{" "}
+                  {park.entranceFees[0].description}
                 </p>
               </div>
             )}
 
             {park.operatingHours?.[0] && (
               <div className="mb-6">
-                <h2 className="font-bold text-lg text-gray-800 mb-1">
-                  Hours
-                </h2>
-                <p className="text-gray-700">
+                <h2 className="font-bold text-lg text-gray-800 mb-1">Hours</h2>
+
+                <p className="text-gray-700 mb-3">
                   {park.operatingHours[0].description}
                 </p>
+
+                {park.operatingHours[0].standardHours && (
+                  <div className="rounded-lg border border-gray-200 overflow-hidden mb-4">
+                    <table className="w-full text-sm">
+                      <tbody>
+                        {Object.entries(
+                          park.operatingHours[0].standardHours,
+                        ).map(([day, hours]) => (
+                          <tr
+                            key={day}
+                            className="border-b border-gray-100 last:border-0"
+                          >
+                            <td className="px-4 py-2 font-medium text-gray-700 capitalize bg-gray-50 w-32">
+                              {day}
+                            </td>
+                            <td className="px-4 py-2 text-gray-600">{hours}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {park.operatingHours[0].exceptions?.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-2">
+                      Holiday / Seasonal Exceptions
+                    </h3>
+                    <div className="flex flex-col gap-3">
+                      {park.operatingHours[0].exceptions.map((exception, i) => (
+                        <div
+                          key={i}
+                          className="rounded-lg border border-amber-200 bg-amber-50 p-3"
+                        >
+                          <p className="font-medium text-gray-800">
+                            {exception.name}
+                          </p>
+                          {exception.exceptionHours?.[0] && (
+                            <p className="text-sm text-gray-600 mt-1">
+                              {Object.entries(exception.exceptionHours[0])
+                                .map(([day, hours]) => `${day}: ${hours}`)
+                                .join(" · ")}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -117,8 +166,8 @@ function Detail_page() {
               </div>
             )}
 
-            
-             <a href={park.url}
+            <a
+              href={park.url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-gray-800 hover:bg-gray-900 text-white rounded-full px-6 py-2.5 font-medium transition-colors"
