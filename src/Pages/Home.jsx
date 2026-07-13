@@ -14,7 +14,7 @@ function Home() {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://developer.nps.gov/api/v1/parks?limit=500`,
+        `https://developer.nps.gov/api/v1/parks?limit=100`,
         {
           method: "GET",
           headers: { "X-Api-Key": API_KEY },
